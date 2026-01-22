@@ -115,8 +115,9 @@ body {                                      /* This block of CSS is responsible 
     opacity: 0.7;
 }
 
-@media (max-width: 480px) {
+/* Media tags for ajusting certain CSS properties depending on the device's screen size. */
 
+@media (max-width: 480px) {
     #login_pane input,
     #login_pane input[type="submit"] {
         height: 2.5rem;
