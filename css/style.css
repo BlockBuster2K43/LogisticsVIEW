@@ -226,6 +226,9 @@ body.login {
     box-sizing: border-box;
 }
 
+/* Stats table CSS (stats_table) */
+/* The following CSS is responsible for handling all of the stats table on the home page material and content. */
+
 /* Media tags for ajusting certain CSS properties depending on the device's screen size. */
 
 @media (max-width: 480px) {

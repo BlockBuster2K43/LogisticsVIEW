@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/style.css">
     </head>
-    <body>
+    <body onload="chart_tripByUsage(), chart_tripByRegistration(), chart_tripByTypeOfVehicle(), chart_tripByDestination()">
         <div class="row">
             <div class="column left">
             </div>
@@ -28,6 +28,20 @@
                         </ul>
                     </div>
                 </div>
+
+                <table id="stats_table">
+                    <tr>
+                        <td>
+                            <canvas id="tripsByUsage"></canvas>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="column right">
             </div>
