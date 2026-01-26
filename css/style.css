@@ -1,12 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {                                      /* This block of CSS is responsible for setting site wide properties such as colours, alignments, */
     min-height: 100svh;                     /* font's and text colours. This CSS block is used site-wide for lots of different assets. */
     margin: 0;
     font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 600;
-    font-style: normal;
     background-color: #111111;
     color: #FFFFFF;
+}
+
+.main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 0;
 }
 
 /* Alpha banner CSS (alpha_banner, alpha_tag, alpha_message) */
@@ -15,34 +29,31 @@ body {                                      /* This block of CSS is responsible 
 .alpha_banner {
     background-color: #fff3cd;
     color: #856404;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+    padding: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #ffeeba;
+    position: sticky; 
     top: 0;
     z-index: 1000;
     font-size: 0.9rem;
     gap: 0.75rem;
     width: 100%;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-  }
+}
 
-  .alpha_tag {
+.alpha_tag {
     background-color: #856404;
     color: white;
-    padding: 0.35rem 0.35rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-size: 0.7rem;
     letter-spacing: 0.1rem;
-  }
+}
 
-  .alpha_message {
+.alpha_message {
     margin: 0;
-  }
+}
 
   /* Responsive tweak for small screens */
   @media (max-width: 600px) {
@@ -53,7 +64,7 @@ body {                                      /* This block of CSS is responsible 
     }
   }
 
-/* Login page CSS (login_pane, login_content, login_title_content, .description_text, .subtitle_content) */
+/* Login page CSS (login_container, login_content, login_title_content, .description_text, .subtitle_content) */
 /* The following CSS is responsible for handing all of the login page material and content. */
 
 body.login {
@@ -61,15 +72,14 @@ body.login {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100svh;
 }
 
-body.login #login_pane {
+body.login #login_container {
     margin-top: auto;
     margin-bottom: auto;
 }
 
-#login_pane {
+#login_container {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -86,7 +96,7 @@ body.login #login_pane {
     z-index: 1;
 }
 
-#login_pane::before {
+#login_container::before {
     position: absolute;
     content: "";
     inset: 0;
@@ -101,25 +111,25 @@ body.login #login_pane {
     z-index: -1;
 }
 
-#login_pane #login_content {
+#login_container #login_content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
 }
 
-#login_pane h1 {
+#login_container h1 {
     font-size: 1.75rem;
     margin-bottom: 0;
     color: #FFFFFF;
 }
 
-#login_pane p {
+#login_container p {
     font-size: clamp(1rem, 4vw, 1.25rem);
     margin-bottom: 1.5rem;
 }
 
-#login_pane input {
+#login_container input {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -136,7 +146,7 @@ body.login #login_pane {
     font-size: 0.8rem;
 }
 
-#login_pane input[type="submit"] {
+#login_container input[type="submit"] {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -152,18 +162,18 @@ body.login #login_pane {
     font-size: 0.8rem;
 }
 
-#login_pane input[type="submit"]:hover {
+#login_container input[type="submit"]:hover {
     background-color: #006089;
     transform: translateY(-2px);
 }
 
-#login_pane .description_text {
+#login_container #login_description {
     font-size: 0.6rem;
     margin-top: 1rem;
     opacity: 0.7;
 }
 
-#login_pane .subtitle_text {
+#login_container #login_subtitle {
     font-size: 0.6rem;
     margin-top: 0px;
     opacity: 0.7;
@@ -172,15 +182,15 @@ body.login #login_pane {
 /* Navbar CSS (navbar_content, navbar_inner, navbar_left) */
 /* The following CSS is responsible for handing all of the navbar material and content. */
 
-#navbar_content {
+#navbar_container {
     position: relative;
     border-radius: 1rem;
     padding: 0.25rem;
-    max-width: 100%;
-    box-sizing: border-box;
+    width: fit-content;
+    margin-bottom: 2rem;
 }
 
-#navbar_content::before {
+#navbar_container::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -193,7 +203,7 @@ body.login #login_pane {
     z-index: -1;
 }
 
-#navbar_inner {
+#navbar_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -201,19 +211,12 @@ body.login #login_pane {
     border-radius: 0.75rem;
     padding: 0.5rem 1rem;
     gap: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#navbar_left {
-    margin: 0;
 }
 
 .navbar_title {
     margin: 0;
     font-size: 1.25rem;
 }
-
 .navbar_subtitle {
     margin: 0;
     font-size: 0.6rem;
@@ -232,12 +235,11 @@ body.login #login_pane {
     display: inline-block;
     background-color: #004067;
     color: white;
-    padding: 0.2rem 1rem;
-    margin: 0;
+    padding: 0.4rem 1rem;
     text-decoration: none;
     border-radius: 0.5rem;
     font-size: 0.8rem;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .navbar_links a:hover {
@@ -278,26 +280,26 @@ body.login #login_pane {
 /* Media tags for ajusting certain CSS properties depending on the device's screen size. */
 
 @media (max-width: 480px) {
-    #login_pane input,
-    #login_pane input[type="submit"] {
+    #login_container input,
+    #login_container input[type="submit"] {
         height: 2.5rem;
-        font-size: 0.90rem;
+        font-size: 0.9rem;
     }
 
-    #login_pane .description_text,
-    #login_pane .subtitle_text {
+    #login_container #login_description,
+    #login_container #login_subtitle {
         font-size: 0.75rem;
     }
 }
 
 @media (max-width: 768px) {
-    #navbar_inner {
+    #navbar_content {
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
     }
 
-    #navbar_left {
+    #navbar_title_content {
         text-align: center;
     }
 
@@ -322,7 +324,7 @@ body.login #login_pane {
 }
 
 @media (max-width: 480px) {
-    #navbar_inner {
+    #navbar_content {
         padding: 0.5rem 0.75rem;
     }
 
@@ -337,22 +339,5 @@ body.login #login_pane {
 
     .navbar_subtitle {
         font-size: 0.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .column.left,
-    .column.right {
-        display: none;
-    }
-
-    .column.middle {
-        flex: 1;
-        width: 100%;
-        padding: 0.5rem;
-    }
-
-    .row {
-        gap: 0;
     }
 }
