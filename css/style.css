@@ -13,20 +13,27 @@ body {                                      /* This block of CSS is responsible 
     color: #FFFFFF;
 }
 
-.main_container {
-    display: flex;
+/* Main container CSS (main_container) */
+/* The following CSS is responsible for handing all of the main container material and content. */
+
+#main_container {
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     width: 95%;
     max-width: 1100px;
     margin: 0 auto;
     padding: 1rem 0;
 }
 
+#main_title {
+    text-align: center;
+}
+
 /* Alpha banner CSS (alpha_banner, alpha_tag, alpha_message) */
 /* The following CSS is responsible for handing all of the alpha banner material and content. */
 
-.alpha_banner {
+#alpha_banner {
     background-color: #fff3cd;
     color: #856404;
     padding: 0.75rem;
@@ -42,7 +49,7 @@ body {                                      /* This block of CSS is responsible 
     width: 100%;
 }
 
-.alpha_tag {
+#alpha_tag {
     background-color: #856404;
     color: white;
     padding: 0.2rem 0.5rem;
@@ -51,7 +58,7 @@ body {                                      /* This block of CSS is responsible 
     letter-spacing: 0.1rem;
 }
 
-.alpha_message {
+#alpha_message {
     margin: 0;
 }
 
@@ -129,7 +136,7 @@ body.login #login_container {
     margin-bottom: 1.5rem;
 }
 
-#login_container input {
+#login_container input, #login_container button {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -146,7 +153,7 @@ body.login #login_container {
     font-size: 0.8rem;
 }
 
-#login_container input[type="submit"] {
+#login_container button[type="submit"] {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
@@ -162,7 +169,7 @@ body.login #login_container {
     font-size: 0.8rem;
 }
 
-#login_container input[type="submit"]:hover {
+#login_container button[type="submit"]:hover {
     background-color: #006089;
     transform: translateY(-2px);
 }
@@ -182,15 +189,21 @@ body.login #login_container {
 /* Navbar CSS (navbar_content, navbar_inner, navbar_left) */
 /* The following CSS is responsible for handing all of the navbar material and content. */
 
-#navbar_container {
+#header_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navbar_container, #content_container {
     position: relative;
     border-radius: 1rem;
     padding: 0.25rem;
     width: fit-content;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
-#navbar_container::before {
+#navbar_container::before, #content_container::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -203,7 +216,7 @@ body.login #login_container {
     z-index: -1;
 }
 
-#navbar_content {
+#navbar_content, #content_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -213,17 +226,24 @@ body.login #login_container {
     gap: 1rem;
 }
 
-.navbar_title {
+#sub_main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+#navbar_title {
     margin: 0;
     font-size: 1.25rem;
 }
-.navbar_subtitle {
+#navbar_subtitle {
     margin: 0;
     font-size: 0.6rem;
     opacity: 0.7;
 }
 
-.navbar_links {
+#navbar_links {
     list-style: none;
     display: flex;
     gap: 0.5rem;
@@ -231,7 +251,7 @@ body.login #login_container {
     padding: 0;
 }
 
-.navbar_links a {
+#navbar_links a {
     display: inline-block;
     background-color: #004067;
     color: white;
@@ -242,7 +262,7 @@ body.login #login_container {
     transition: all 0.3s ease;
 }
 
-.navbar_links a:hover {
+#navbar_links a:hover {
     background-color: #006089;
     transform: translateY(-2px);
 }
@@ -274,6 +294,44 @@ body.login #login_container {
     flex: 1;
 }
 
+/* CSS loader (loader) */
+/* The following CSS is responsible for creating and handling the content for the CSS loader used across the project. */
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    display: none;
+    width: 90px;
+    height: 14px;
+    --c:#ffffff 90deg,#0000 0;
+    background: 
+        conic-gradient(from 135deg at top   ,var(--c)) 0 0,
+        conic-gradient(from -45deg at bottom,var(--c)) 0 100%;
+    background-size: calc(100%/4) 50%;
+    background-repeat: repeat-x;
+    animation: l12 1s infinite;
+}
+
+@keyframes l12 {
+    80%,100% {
+        background-position: calc(100%/3) 0, calc(100%/-3) 100%;
+    }
+}
+
+button {
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 8px;
+}
+
+button.loading .loader {
+    display: block;
+}
+
+button.loading #text {
+    display: none;
+}
+
 /* Stats table CSS (stats_table) */
 /* The following CSS is responsible for handling all of the stats table on the home page material and content. */
 
@@ -303,22 +361,22 @@ body.login #login_container {
         text-align: center;
     }
 
-    .navbar_links {
+    #navbar_links {
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.25rem 0.5rem;
     }
 
-    .navbar_links a {
+    #navbar_links a {
         padding: 0.5rem 0.75rem;
         font-size: 0.9rem;
     }
 
-    .navbar_title {
+    #navbar_title {
         font-size: 1.1rem;
     }
 
-    .navbar_subtitle {
+    #navbar_subtitle {
         font-size: 0.55rem;
     }
 }
@@ -328,16 +386,16 @@ body.login #login_container {
         padding: 0.5rem 0.75rem;
     }
 
-    .navbar_links a {
+    #navbar_links a {
         padding: 0.5rem 0.5rem;
         font-size: 0.9rem;
     }
 
-    .navbar_title {
+    #navbar_title {
         font-size: 1rem;
     }
 
-    .navbar_subtitle {
+    #navbar_subtitle {
         font-size: 0.5rem;
     }
 }
